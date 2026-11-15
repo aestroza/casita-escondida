@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cabaña Casita Escondida | Arriendo por noche en Lonquimay</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c3529'/%3E%3Cpath d='M32 12 8 32h7v20h34V32h7z' fill='%23f8f3e9'/%3E%3Cpath d='M27 52V38h10v14z' fill='%231c3529'/%3E%3C/svg%3E">
-<meta name="description" content="Cabaña para 4 personas en Lonquimay, a 5 minutos a pie de la plaza. 2 dormitorios, cocina equipada, estufa a leña y estacionamiento. Reserva directa por WhatsApp.">
+<meta name="description" content="Cabaña para 4 personas en Lonquimay, a 5 minutos a pie de la plaza. Desde $30.000 la noche, con estufa a leña y estacionamiento. Reserva directa por WhatsApp.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <meta property="og:title" content="Cabaña Casita Escondida | Lonquimay">
@@ -35,6 +35,7 @@
   "checkinTime": "15:00",
   "checkoutTime": "13:00",
   "numberOfRooms": 2,
+  "priceRange": "$30.000 – $47.000 CLP por noche",
   "petsAllowed": false
 }
 </script>
@@ -110,6 +111,8 @@
   .tarjetas { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
   .tarjeta { background: #fff; border-radius: var(--radio); padding: 22px; }
   .tarjeta p { margin: 0; color: var(--suave); font-size: .97rem; }
+  .tarjeta .monto { font-family: Georgia, serif; font-size: 2rem; line-height: 1.1; color: var(--bosque); margin: 4px 0 6px; font-variant-numeric: tabular-nums; }
+  .precio-notas { margin-top: 22px; }
 
   .notas { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; }
   .nota-grande { font-family: Georgia, serif; font-size: 4rem; line-height: 1; }
@@ -127,6 +130,8 @@
     width: 100%; font: inherit; padding: .65em .7em;
     border: 1.5px solid #c9c2b0; border-radius: 10px; background: #fff; color: inherit;
   }
+  .estimado { margin: 0; font-size: .95rem; }
+  .estimado:not(:empty) { margin: 0 0 16px; padding: 10px 14px; background: var(--crema); border-radius: 10px; }
   .aviso { min-height: 1.5em; font-size: .92rem; color: #a3341d; margin: 10px 0 0; }
 
   .mapa { display: block; width: 100%; height: 340px; border: 0; border-radius: var(--radio); background: #d5ccb6; }
@@ -148,6 +153,10 @@
     .datos li { font-size: .85rem; line-height: 1.4; }
     .datos strong { font-size: 1.1rem; margin-bottom: 2px; }
     .notas { gap: 22px; }
+    .precios .tarjeta { display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: 12px; padding: 16px 18px; }
+    .precios .tarjeta h3 { margin: 0; }
+    .precios .tarjeta .monto { font-size: 1.6rem; margin: 0; }
+    .precios .tarjeta p:last-child { grid-column: 1 / -1; margin-top: 2px; }
     .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
     header.barra .boton { display: none; }
     .flotante { display: inline-flex; }
@@ -178,7 +187,7 @@
         <ul class="datos">
           <li><strong>4 personas</strong>2 dormitorios · 4 camas</li>
           <li><strong>4,76 de 5</strong>17 reseñas en Airbnb</li>
-          <li><strong>5 minutos</strong>a pie de la plaza</li>
+          <li><strong>Desde <span data-precio="nocheSemana">$30.000</span></strong>la noche, 2 personas</li>
         </ul>
       </div>
       <img class="foto" src="fotos/airbnb-14.jpg" alt="Fachada de la cabaña Casita Escondida, rodeada de árboles" width="1200" height="1309">
@@ -272,6 +281,34 @@
     </div>
   </section>
 
+  <section id="precios" aria-labelledby="t-precios">
+    <div class="ancho">
+      <h2 id="t-precios">Precios</h2>
+      <p>Precio por noche reservando directo con nosotros por WhatsApp.</p>
+      <div class="tarjetas precios">
+        <div class="tarjeta">
+          <h3>Noches de domingo a jueves</h3>
+          <p class="monto" data-precio="nocheSemana">$30.000</p>
+          <p>por noche, hasta 2 personas</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Noches de viernes y sábado</h3>
+          <p class="monto" data-precio="nocheFinde">$31.000</p>
+          <p>por noche, hasta 2 personas</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Persona adicional</h3>
+          <p class="monto" data-precio="personaExtra">$8.000</p>
+          <p>por persona y noche, desde la tercera. Máximo 4 personas.</p>
+        </div>
+      </div>
+      <ul class="lista precio-notas">
+        <li>7 noches o más: pregunta por precio especial.</li>
+        <li>Reservando directo pagas menos que en las plataformas de reserva.</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="reserva" id="reservar" aria-labelledby="t-reservar">
     <div class="ancho dos">
       <div>
@@ -293,6 +330,7 @@
             <select id="personas"></select>
           </div>
         </div>
+        <p class="estimado" id="estimado" aria-live="polite"></p>
         <button class="boton" type="submit">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
           Preguntar por WhatsApp
@@ -359,10 +397,21 @@
     whatsapp: '56984078017',   // con código de país, solo dígitos
     capacidad: 4,
     nombre: 'la Cabaña Casita Escondida en Lonquimay',
+    // Precios en CLP por noche. Si los cambias, cambia también el texto escrito en el HTML
+    // (portada, sección Precios, meta description y priceRange del JSON-LD), que es lo que
+    // leen los buscadores y quien navega sin JavaScript.
+    nocheSemana: 30000,        // noches de domingo a jueves
+    nocheFinde: 31000,         // noches de viernes y sábado
+    personaExtra: 8000,        // por persona y noche sobre las incluidas
+    personasIncluidas: 2,
+    nochesPrecioEspecial: 7,   // desde aquí no se muestra total: se pide precio especial
   };
 
   const $ = (id) => document.getElementById(id);
-  const llegada = $('llegada'), salida = $('salida'), personas = $('personas'), aviso = $('aviso');
+  const llegada = $('llegada'), salida = $('salida'), personas = $('personas'), aviso = $('aviso'), estimado = $('estimado');
+
+  const clp = (n) => '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  document.querySelectorAll('[data-precio]').forEach((el) => { el.textContent = clp(CABANA[el.dataset.precio]); });
 
   const aTexto = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const aFecha = (s) => { const [a, m, d] = s.split('-').map(Number); return new Date(a, m - 1, d); };
@@ -382,7 +431,46 @@
     const minimo = aTexto(new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1));
     salida.min = minimo;
     if (!salida.value || salida.value < minimo) salida.value = minimo;
+    actualizarEstimado();
   });
+
+  // Cada noche se cobra según el día en que empieza: viernes y sábado tarifa de fin de semana
+  function cotizar(desde, hasta, n) {
+    const noches = Math.round((hasta - desde) / 86400000);
+    if (!(noches >= 1)) return null;
+    if (noches >= CABANA.nochesPrecioEspecial) return { noches, especial: true };
+    const extra = Math.max(0, n - CABANA.personasIncluidas) * CABANA.personaExtra;
+    let total = 0;
+    for (let i = 0; i < noches; i++) {
+      const dia = new Date(desde.getFullYear(), desde.getMonth(), desde.getDate() + i).getDay();
+      total += (dia === 5 || dia === 6 ? CABANA.nocheFinde : CABANA.nocheSemana) + extra;
+    }
+    return { noches, total };
+  }
+
+  function cotizacionActual() {
+    if (!llegada.value || !salida.value) return null;
+    return cotizar(aFecha(llegada.value), aFecha(salida.value), Number(personas.value));
+  }
+
+  function actualizarEstimado() {
+    const c = cotizacionActual();
+    if (!c) { estimado.textContent = ''; return; }
+    if (c.especial) {
+      estimado.textContent = `${CABANA.nochesPrecioEspecial} noches o más: te respondemos con un precio especial.`;
+      return;
+    }
+    const n = Number(personas.value);
+    estimado.innerHTML = `<strong>Total estimado: ${clp(c.total)}</strong> · ` +
+      `${c.noches} ${c.noches === 1 ? 'noche' : 'noches'}, ${n} ${n === 1 ? 'persona' : 'personas'}`;
+  }
+
+  [salida, personas].forEach((el) => {
+    el.addEventListener('input', actualizarEstimado);
+    el.addEventListener('change', actualizarEstimado);
+  });
+  llegada.addEventListener('input', actualizarEstimado);
+  actualizarEstimado();
 
   function enlace(mensaje) {
     return `https://wa.me/${CABANA.whatsapp}?text=${encodeURIComponent(mensaje)}`;
@@ -403,9 +491,11 @@
     const noches = Math.round((hasta - desde) / 86400000);
     if (noches < 1) { aviso.textContent = 'La salida tiene que ser después de la llegada.'; return; }
     const n = Number(personas.value);
+    const c = cotizar(desde, hasta, n);
     const mensaje = `Hola, quiero consultar disponibilidad de ${CABANA.nombre}:\n` +
       `• Llegada: ${bonita(desde)}\n• Salida: ${bonita(hasta)} (${noches} ${noches === 1 ? 'noche' : 'noches'})\n` +
-      `• ${n} ${n === 1 ? 'persona' : 'personas'}`;
+      `• ${n} ${n === 1 ? 'persona' : 'personas'}\n` +
+      (c.especial ? '• Estadía larga: consulto por precio especial' : `• Total estimado según la web: ${clp(c.total)}`);
     window.open(enlace(mensaje), '_blank', 'noopener');
   });
 </script>
