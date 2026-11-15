@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cabaña Casita Escondida | Arriendo por noche en Lonquimay</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c3529'/%3E%3Cpath d='M32 12 8 32h7v20h34V32h7z' fill='%23f8f3e9'/%3E%3Cpath d='M27 52V38h10v14z' fill='%231c3529'/%3E%3C/svg%3E">
-<meta name="description" content="Cabaña para 4 personas en Lonquimay, a 5 minutos a pie de la plaza. Desde $30.000 la noche, con wifi, estufa a leña y estacionamiento. Reserva directa por WhatsApp.">
+<meta name="description" content="Cabaña para 4 personas en Lonquimay, a 5 min a pie de la plaza. Desde $36.000 la noche, con wifi, leña incluida y estacionamiento. Reserva directa por WhatsApp.">
 <meta name="theme-color" content="#1c3529">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
@@ -23,7 +23,7 @@
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
   "name": "Cabaña Casita Escondida",
-  "description": "Cabaña para 4 personas en Lonquimay, con 2 dormitorios, wifi, cocina equipada, estufa a leña y estacionamiento.",
+  "description": "Cabaña para 4 personas en Lonquimay, con 2 dormitorios y 3 camas (una de dos plazas y dos individuales), wifi, cocina equipada, estufa a leña con leña incluida y estacionamiento.",
   "url": "https://aestroza.github.io/casita-escondida/",
   "image": [
     "https://aestroza.github.io/casita-escondida/fotos/airbnb-14.jpg",
@@ -42,13 +42,16 @@
   "checkinTime": "15:00",
   "checkoutTime": "13:00",
   "numberOfRooms": 2,
-  "priceRange": "$30.000 – $47.000 CLP por noche",
+  "priceRange": "$36.000 – $64.000 CLP por noche",
   "petsAllowed": false,
   "amenityFeature": [
     { "@type": "LocationFeatureSpecification", "name": "Wifi", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Agua caliente", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Cocina equipada", "value": true },
-    { "@type": "LocationFeatureSpecification", "name": "Estufa a leña", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Estufa a leña, leña incluida", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Sábanas", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Jabón y papel higiénico", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Toallas", "value": false },
     { "@type": "LocationFeatureSpecification", "name": "Televisión", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Mantas y almohadas adicionales", "value": true },
     { "@type": "LocationFeatureSpecification", "name": "Estacionamiento gratis para 2 autos", "value": true }
@@ -141,8 +144,15 @@
   .tarjetas { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); }
   .tarjeta { background: #fff; border-radius: var(--radio); padding: 22px; }
   .tarjeta p { margin: 0; color: var(--suave); font-size: .97rem; }
-  .tarjeta .monto { font-family: Georgia, serif; font-size: 2rem; line-height: 1.1; color: var(--bosque); margin: 4px 0 6px; font-variant-numeric: tabular-nums; }
-  .precio-notas { margin-top: 22px; }
+  .tarifas { margin: 6px 0 8px; }
+  .tarifas div { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 12px; padding: 5px 0; border-bottom: 1px solid #eee6d6; }
+  .tarifas dd { margin: 0; font: 1.45rem/1.2 Georgia, serif; color: var(--bosque); font-variant-numeric: tabular-nums; }
+  .tarifas small { display: block; font-size: .85rem; line-height: 1.35; color: var(--suave); }
+  .precios { grid-template-columns: 1fr 1fr 1.3fr; }
+  .fechas div { flex-wrap: nowrap; }
+  .fechas dd { font-size: 1.2rem; }
+  .lista + p { margin: 12px 0 0; }
+  .extra { margin: 22px 0 10px; }
 
   .notas { display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; }
   .nota-grande { font-family: Georgia, serif; font-size: 4rem; line-height: 1; }
@@ -227,10 +237,7 @@
     .servicios ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
     .servicios li { font-size: .9rem; }
     .notas { gap: 22px; }
-    .precios .tarjeta { display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: 12px; padding: 16px 18px; }
-    .precios .tarjeta h3 { margin: 0; }
-    .precios .tarjeta .monto { font-size: 1.6rem; margin: 0; }
-    .precios .tarjeta p:last-child { grid-column: 1 / -1; margin-top: 2px; }
+    .precios .tarjeta { padding: 16px 18px; }
     .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
     .reserva .dos { gap: 28px; }
     .reserva .caja { padding: 20px; }
@@ -261,9 +268,9 @@
         <p class="bajada">Para 4 personas, escondida entre árboles y a 5 minutos a pie de la plaza de Lonquimay. Reserva directo con los dueños.</p>
         <a class="boton" href="#reservar">Consultar disponibilidad</a>
         <ul class="datos">
-          <li><strong>4 personas</strong>2 dormitorios · 4 camas</li>
+          <li><strong>4 personas</strong>2 dormitorios · 3 camas</li>
           <li><strong><svg class="estrella" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"/></svg>4,76 de 5</strong>17 reseñas en Airbnb</li>
-          <li><strong>Desde <span data-precio="nocheSemana">$30.000</span></strong>la noche, 2 personas</li>
+          <li><strong>Desde <span data-precio="desde">$36.000</span></strong>la noche, 2 personas</li>
         </ul>
       </div>
       <picture>
@@ -283,7 +290,7 @@
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.4a9.5 9.5 0 0 1 13 0M8.6 15.8a5 5 0 0 1 6.8 0"/><circle cx="12" cy="19.2" r=".6"/></svg>Wifi</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8S6 9.3 6 14a6 6 0 0 0 12 0c0-4.7-6-11.2-6-11.2Z"/><path d="M9.3 14.6a2.8 2.8 0 0 0 2.4 2.6"/></svg>Agua caliente</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 11h15v5a4 4 0 0 1-4 4h-7a4 4 0 0 1-4-4Z"/><path d="M2.5 11h19M9 7.5V5.5M12 7.5V4M15 7.5V5.5"/></svg>Cocina equipada</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8c.6 2.8 4.6 4.9 4.6 9.7a4.6 4.6 0 0 1-9.2 0c0-2.2 1-3.6 2.2-4.8.2 1.7.9 2.7 2 3.2-.4-3 .4-5.4.4-8.1Z"/><path d="M5 21.2h14"/></svg>Estufa a leña</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8c.6 2.8 4.6 4.9 4.6 9.7a4.6 4.6 0 0 1-9.2 0c0-2.2 1-3.6 2.2-4.8.2 1.7.9 2.7 2 3.2-.4-3 .4-5.4.4-8.1Z"/><path d="M5 21.2h14"/></svg>Estufa a leña, leña incluida</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><path d="M10 17V7.5h3.2a3 3 0 0 1 0 6H10"/></svg>Estacionamiento para 2 autos</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7M12 17v3.5"/></svg>Televisión</li>
         <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5c2.5-.9 11.5-.9 14 0 .8 1.3.8 4.2 0 5.5-2.5.9-11.5.9-14 0-.8-1.3-.8-4.2 0-5.5Z"/><rect x="3.5" y="13" width="17" height="7" rx="1.5"/><path d="M3.5 16.5h17"/></svg>Mantas y almohadas extra</li>
@@ -298,8 +305,8 @@
       <div class="galeria">
         <a href="fotos/airbnb-01.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(100vw - 40px), 500px" srcset="fotos/airbnb-01-480.avif 480w, fotos/airbnb-01-800.avif 800w, fotos/airbnb-01-1200.avif 1200w"><img src="fotos/airbnb-01-800.jpg" sizes="(max-width: 760px) calc(100vw - 40px), 500px" srcset="fotos/airbnb-01-480.jpg 480w, fotos/airbnb-01-800.jpg 800w, fotos/airbnb-01.jpg 1200w" width="1200" height="900" alt="Living con sillones, televisión y estufa a leña" loading="lazy" decoding="async"></picture></a>
         <a href="fotos/airbnb-07.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-07-480.avif 480w, fotos/airbnb-07-800.avif 800w"><img src="fotos/airbnb-07-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-07-480.jpg 480w, fotos/airbnb-07-800.jpg 800w" width="1200" height="900" alt="Cocina y comedor con mesa para cuatro" loading="lazy" decoding="async"></picture></a>
-        <a href="fotos/airbnb-08.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-08-480.avif 480w, fotos/airbnb-08-800.avif 800w"><img src="fotos/airbnb-08-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-08-480.jpg 480w, fotos/airbnb-08-800.jpg 800w" width="1200" height="900" alt="Dormitorio con dos camas" loading="lazy" decoding="async"></picture></a>
-        <a href="fotos/airbnb-10.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-10-480.avif 480w, fotos/airbnb-10-800.avif 800w"><img src="fotos/airbnb-10-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-10-480.jpg 480w, fotos/airbnb-10-800.jpg 800w" width="1200" height="900" alt="Segundo dormitorio con dos camas" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-08.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-08-480.avif 480w, fotos/airbnb-08-800.avif 800w"><img src="fotos/airbnb-08-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-08-480.jpg 480w, fotos/airbnb-08-800.jpg 800w" width="1200" height="900" alt="Dormitorio" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-10.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-10-480.avif 480w, fotos/airbnb-10-800.avif 800w"><img src="fotos/airbnb-10-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-10-480.jpg 480w, fotos/airbnb-10-800.jpg 800w" width="1200" height="900" alt="Segundo dormitorio" loading="lazy" decoding="async"></picture></a>
         <a href="fotos/airbnb-12.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-12-480.avif 480w, fotos/airbnb-12-800.avif 800w"><img src="fotos/airbnb-12-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-12-480.jpg 480w, fotos/airbnb-12-800.jpg 800w" width="1200" height="900" alt="Baño con ducha" loading="lazy" decoding="async"></picture></a>
         <a href="fotos/airbnb-02.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-02-480.avif 480w, fotos/airbnb-02-800.avif 800w"><img src="fotos/airbnb-02-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-02-480.jpg 480w, fotos/airbnb-02-800.jpg 800w" width="1200" height="900" alt="Vista al jardín desde la cabaña" loading="lazy" decoding="async"></picture></a>
         <a href="fotos/airbnb-03.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-03-480.avif 480w, fotos/airbnb-03-800.avif 800w"><img src="fotos/airbnb-03-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-03-480.jpg 480w, fotos/airbnb-03-800.jpg 800w" width="1200" height="900" alt="Cocina con refrigerador, microondas y hervidor" loading="lazy" decoding="async"></picture></a>
@@ -308,7 +315,7 @@
       </div>
       <div class="cta">
         <a class="boton" href="#reservar">Consultar disponibilidad</a>
-        <span>Desde <strong data-precio="nocheSemana">$30.000</strong> la noche</span>
+        <span>Desde <strong data-precio="desde">$36.000</strong> la noche</span>
       </div>
     </div>
   </section>
@@ -323,16 +330,17 @@
       <div>
         <h3>Qué incluye</h3>
         <ul class="lista">
-          <li>2 dormitorios con 4 camas</li>
-          <li>Baño con ducha y agua caliente</li>
+          <li>2 dormitorios con 3 camas: una de dos plazas y dos individuales, con sábanas</li>
+          <li>Baño con ducha y agua caliente, jabón y papel higiénico</li>
           <li>Cocina equipada: refrigerador, cocina con horno, microondas, hervidor, ollas y vajilla</li>
-          <li>Estufa a leña</li>
+          <li>Estufa a leña, con la leña incluida</li>
           <li>Living con televisión</li>
           <li>Mantas y almohadas adicionales</li>
           <li>Wifi</li>
           <li>Estacionamiento gratis para 2 autos</li>
           <li>Te recibimos en persona</li>
         </ul>
+        <p>No incluye toallas: trae las tuyas.</p>
       </div>
     </div>
   </section>
@@ -355,26 +363,39 @@
   <section class="alterna" id="precios" aria-labelledby="t-precios">
     <div class="ancho">
       <h2 id="t-precios">Precios</h2>
-      <p>Precio por noche reservando directo con nosotros por WhatsApp.</p>
+      <p>Precio por noche, hasta 2 personas, reservando directo con nosotros por WhatsApp.</p>
       <div class="tarjetas precios">
         <div class="tarjeta">
-          <h3>Noches de domingo a jueves</h3>
-          <p class="monto" data-precio="nocheSemana">$30.000</p>
-          <p>por noche, hasta 2 personas</p>
+          <h3>Temporada baja</h3>
+          <p>Hasta el 24 de diciembre y desde el 1 de marzo</p>
+          <dl class="tarifas">
+            <div><dt>Domingo a jueves</dt><dd data-precio="temporadas.0.semana">$36.000</dd></div>
+            <div><dt>Viernes y sábado</dt><dd data-precio="temporadas.0.finde">$39.000</dd></div>
+          </dl>
         </div>
         <div class="tarjeta">
-          <h3>Noches de viernes y sábado</h3>
-          <p class="monto" data-precio="nocheFinde">$31.000</p>
-          <p>por noche, hasta 2 personas</p>
+          <h3>Temporada alta</h3>
+          <p>Del 27 de diciembre al 28 de febrero</p>
+          <dl class="tarifas">
+            <div><dt>Domingo a jueves</dt><dd data-precio="temporadas.1.semana">$40.000</dd></div>
+            <div><dt>Viernes y sábado</dt><dd data-precio="temporadas.1.finde">$43.000</dd></div>
+          </dl>
         </div>
         <div class="tarjeta">
-          <h3>Persona adicional</h3>
-          <p class="monto" data-precio="personaExtra">$8.000</p>
-          <p>por persona y noche, desde la tercera. Máximo 4 personas.</p>
+          <h3>Fechas especiales</h3>
+          <dl class="tarifas fechas">
+            <div><dt>6 y 7 de diciembre<small>Feriado del 8</small></dt><dd data-precio="especiales.0.precio">$39.000</dd></div>
+            <div><dt>Navidad<small>Noches del 25 y 26 de dic.</small></dt><dd data-precio="especiales.1.precio">$40.000</dd></div>
+            <div><dt>Año Nuevo<small>31 de dic. y 1 de ene. · mín. 2 noches si llegas el 31</small></dt><dd data-precio="especiales.2.precio">$49.000</dd></div>
+            <div><dt>Fiesta del Chivo<small>12 y 13 de feb. (fecha por confirmar) · mín. 2 noches si llegas el 12</small></dt><dd data-precio="especiales.3.precio">$54.000</dd></div>
+            <div><dt>Semana Santa<small>25 al 27 de mar. · mín. 2 noches si llegas el 25 o 26</small></dt><dd data-precio="especiales.4.precio">$41.000</dd></div>
+          </dl>
         </div>
       </div>
-      <ul class="lista precio-notas">
+      <p class="extra"><strong>Persona adicional: <span data-precio="personaExtra">$5.000</span></strong> por persona y noche, desde la tercera. Máximo 4 personas.</p>
+      <ul class="lista">
         <li>7 noches o más: pregunta por precio especial.</li>
+        <li>El precio que ves es el total: no cobramos aseo ni comisión.</li>
         <li>Reservando directo pagas menos que en las plataformas de reserva.</li>
       </ul>
     </div>
@@ -472,6 +493,10 @@
         <p>La llegada es entre las 15:00 y las 23:00. La salida es hasta las 13:00.</p>
       </details>
       <details>
+        <summary>¿Qué tengo que llevar?</summary>
+        <p>Tus toallas, porque no las incluimos. Las camas tienen sábanas, hay jabón y papel higiénico, y la leña para la estufa está incluida.</p>
+      </details>
+      <details>
         <summary>¿Cómo pago la reserva?</summary>
         <p>Cuando nos escribes por WhatsApp te confirmamos si tus fechas están disponibles y te indicamos la forma de pago.</p>
       </details>
@@ -518,12 +543,27 @@
     whatsapp: '56984078017',   // con código de país, solo dígitos
     capacidad: 4,
     nombre: 'la Cabaña Casita Escondida en Lonquimay',
-    // Precios en CLP por noche. Si los cambias, cambia también el texto escrito en el HTML
-    // (portada, sección Precios, meta description y priceRange del JSON-LD), que es lo que
-    // leen los buscadores y quien navega sin JavaScript.
-    nocheSemana: 30000,        // noches de domingo a jueves
-    nocheFinde: 31000,         // noches de viernes y sábado
-    personaExtra: 8000,        // por persona y noche sobre las incluidas
+    // Precios en CLP por noche (hasta 2 personas). Cada noche se cobra por su fecha: si está en
+    // "especiales" usa ese precio; si no, la última temporada cuyo "desde" sea igual o anterior.
+    // ACTUALIZAR TEMPORADAS Y ESPECIALES CADA AÑO.
+    // Si cambias precios o fechas, cambia también el texto escrito en el HTML ("Desde $36.000"
+    // de la portada y de la galería, fechas de las tarjetas de Precios, meta description y
+    // priceRange del JSON-LD), que es lo que leen los buscadores y quien navega sin JavaScript.
+    temporadas: [              // semana: noches de domingo a jueves; finde: viernes y sábado
+      { desde: null,         semana: 36000, finde: 39000 },   // baja, hasta el 26-12-2026
+      { desde: '2026-12-27', semana: 40000, finde: 43000 },   // alta, hasta el 28-02-2027
+      { desde: '2027-03-01', semana: 36000, finde: 39000 },   // baja
+    ],
+    // Noches especiales (de "desde" a "hasta", ambas incluidas; mismo orden que en la sección
+    // Precios). minimo: noches mínimas para quien llega en alguna fecha de "llegadas".
+    especiales: [
+      { desde: '2026-12-06', hasta: '2026-12-07', precio: 39000 },   // feriado del 8
+      { desde: '2026-12-25', hasta: '2026-12-26', precio: 40000 },   // Navidad
+      { desde: '2026-12-31', hasta: '2027-01-01', precio: 49000, minimo: 2, llegadas: ['2026-12-31'] },
+      { desde: '2027-02-12', hasta: '2027-02-13', precio: 54000, minimo: 2, llegadas: ['2027-02-12'] }, // Chivo, por confirmar
+      { desde: '2027-03-25', hasta: '2027-03-27', precio: 41000, minimo: 2, llegadas: ['2027-03-25', '2027-03-26'] },
+    ],
+    personaExtra: 5000,        // por persona y noche sobre las incluidas
     personasIncluidas: 2,
     nochesPrecioEspecial: 7,   // desde aquí no se muestra total: se pide precio especial
   };
@@ -532,10 +572,14 @@
   const llegada = $('llegada'), salida = $('salida'), personas = $('personas'), aviso = $('aviso'), estimado = $('estimado');
 
   const clp = (n) => '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  document.querySelectorAll('[data-precio]').forEach((el) => { el.textContent = clp(CABANA[el.dataset.precio]); });
 
   const aTexto = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const aFecha = (s) => { const [a, m, d] = s.split('-').map(Number); return new Date(a, m - 1, d); };
+  const tarifa = (d) => CABANA.temporadas.filter((t) => !t.desde || aFecha(t.desde) <= d).pop() || CABANA.temporadas[0];
+  const especial = (d) => CABANA.especiales.find((e) => aFecha(e.desde) <= d && d <= aFecha(e.hasta));
+  const precioNoche = (d) => { const e = especial(d), t = tarifa(d), dia = d.getDay(); return e ? e.precio : dia === 5 || dia === 6 ? t.finde : t.semana; };
+  // Noches mínimas exigidas al llegar en la fecha d (1 si no hay regla)
+  const minimoLlegada = (d) => { const s = aTexto(d), e = CABANA.especiales.find((x) => x.llegadas && x.llegadas.includes(s)); return e ? e.minimo : 1; };
   const bonita = (d) => d.toLocaleDateString('es-CL', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
 
   for (let n = 1; n <= CABANA.capacidad; n++) {
@@ -543,6 +587,11 @@
   }
 
   const hoy = new Date();
+  // "Desde": tarifa de domingo a jueves de la temporada de hoy; el resto, según la tabla
+  document.querySelectorAll('[data-precio]').forEach((el) => {
+    const k = el.dataset.precio;
+    el.textContent = clp(k === 'desde' ? tarifa(hoy).semana : k.split('.').reduce((o, p) => o[p], CABANA));
+  });
   llegada.min = aTexto(hoy);
   salida.min = aTexto(new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 1));
 
@@ -555,16 +604,17 @@
     actualizarEstimado();
   });
 
-  // Cada noche se cobra según el día en que empieza: viernes y sábado tarifa de fin de semana
+  // Cada noche se cobra según su fecha (especial, o temporada con tarifa de semana o finde)
   function cotizar(desde, hasta, n) {
     const noches = Math.round((hasta - desde) / 86400000);
     if (!(noches >= 1)) return null;
     if (noches >= CABANA.nochesPrecioEspecial) return { noches, especial: true };
+    const minimo = minimoLlegada(desde);
+    if (noches < minimo) return { noches, minimo };
     const extra = Math.max(0, n - CABANA.personasIncluidas) * CABANA.personaExtra;
     let total = 0;
     for (let i = 0; i < noches; i++) {
-      const dia = new Date(desde.getFullYear(), desde.getMonth(), desde.getDate() + i).getDay();
-      total += (dia === 5 || dia === 6 ? CABANA.nocheFinde : CABANA.nocheSemana) + extra;
+      total += precioNoche(new Date(desde.getFullYear(), desde.getMonth(), desde.getDate() + i)) + extra;
     }
     return { noches, total };
   }
@@ -580,6 +630,10 @@
     if (!c) { estimado.textContent = 'Elige las fechas para ver el total estimado.'; return; }
     if (c.especial) {
       estimado.textContent = `${CABANA.nochesPrecioEspecial} noches o más: te respondemos con un precio especial.`;
+      return;
+    }
+    if (c.minimo) {
+      estimado.textContent = `Para esas fechas la estadía mínima es de ${c.minimo} noches. Cambia la salida o pregúntanos igual por WhatsApp.`;
       return;
     }
     const n = Number(personas.value);
@@ -629,7 +683,9 @@
     const mensaje = `Hola, quiero consultar disponibilidad de ${CABANA.nombre}:\n` +
       `• Llegada: ${bonita(desde)}\n• Salida: ${bonita(hasta)} (${noches} ${noches === 1 ? 'noche' : 'noches'})\n` +
       `• ${n} ${n === 1 ? 'persona' : 'personas'}\n` +
-      (c.especial ? '• Estadía larga: consulto por precio especial' : `• Total estimado según la web: ${clp(c.total)}`);
+      (c.especial ? '• Estadía larga: consulto por precio especial'
+        : c.minimo ? `• Según la web, esas fechas piden mínimo ${c.minimo} noches: consulto igual`
+        : `• Total estimado según la web: ${clp(c.total)}`);
     window.open(enlace(mensaje), '_blank', 'noopener');
   });
 
