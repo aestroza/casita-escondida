@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cabaña Casita Escondida | Arriendo por noche en Lonquimay</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c3529'/%3E%3Cpath d='M32 12 8 32h7v20h34V32h7z' fill='%23f8f3e9'/%3E%3Cpath d='M27 52V38h10v14z' fill='%231c3529'/%3E%3C/svg%3E">
-<meta name="description" content="Cabaña para 4 personas en Lonquimay, a 5 minutos a pie de la plaza. Desde $30.000 la noche, con estufa a leña y estacionamiento. Reserva directa por WhatsApp.">
+<meta name="description" content="Cabaña para 4 personas en Lonquimay, a 5 minutos a pie de la plaza. Desde $30.000 la noche, con wifi, estufa a leña y estacionamiento. Reserva directa por WhatsApp.">
+<meta name="theme-color" content="#1c3529">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
 <meta property="og:title" content="Cabaña Casita Escondida | Lonquimay">
 <meta property="og:description" content="Cabaña para 4 personas, escondida entre árboles y cerca del centro. Reserva directa por WhatsApp.">
-<!-- Al pasar a dominio propio, cambiar estas tres direcciones -->
+<!-- Al pasar a dominio propio, cambiar estas direcciones (también las del JSON-LD) -->
 <link rel="canonical" href="https://aestroza.github.io/casita-escondida/">
 <meta property="og:url" content="https://aestroza.github.io/casita-escondida/">
 <meta property="og:image" content="https://aestroza.github.io/casita-escondida/fotos/og.jpg">
@@ -22,7 +23,13 @@
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
   "name": "Cabaña Casita Escondida",
-  "description": "Cabaña para 4 personas en Lonquimay, con 2 dormitorios, cocina equipada, estufa a leña y estacionamiento.",
+  "description": "Cabaña para 4 personas en Lonquimay, con 2 dormitorios, wifi, cocina equipada, estufa a leña y estacionamiento.",
+  "url": "https://aestroza.github.io/casita-escondida/",
+  "image": [
+    "https://aestroza.github.io/casita-escondida/fotos/airbnb-14.jpg",
+    "https://aestroza.github.io/casita-escondida/fotos/airbnb-01.jpg",
+    "https://aestroza.github.io/casita-escondida/fotos/og.jpg"
+  ],
   "telephone": "+56984078017",
   "address": {
     "@type": "PostalAddress",
@@ -36,7 +43,16 @@
   "checkoutTime": "13:00",
   "numberOfRooms": 2,
   "priceRange": "$30.000 – $47.000 CLP por noche",
-  "petsAllowed": false
+  "petsAllowed": false,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Wifi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Agua caliente", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Cocina equipada", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Estufa a leña", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Televisión", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Mantas y almohadas adicionales", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Estacionamiento gratis para 2 autos", "value": true }
+  ]
 }
 </script>
 <style>
@@ -49,6 +65,7 @@
     --suave: #56635c;
     --wsp: #25d366;
     --radio: 14px;
+    --foco: var(--bosque);   /* color del contorno de foco sobre fondos claros */
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 70px; }
@@ -67,41 +84,54 @@
   .ancho { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
   section { padding: 64px 0; }
   section.alterna { background: var(--arena); }
+  .solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   /* Datos que faltan: se ven a propósito para no publicar la página incompleta */
   .pendiente { background: #ffe58a; color: #4a3b00; padding: 0 .3em; border-radius: 4px; font-style: normal; }
 
   .boton {
-    display: inline-flex; align-items: center; gap: .5em;
+    display: inline-flex; align-items: center; justify-content: center; gap: .5em;
     background: var(--wsp); color: #06301a;
     font-weight: 700; text-decoration: none;
     padding: .8em 1.3em; border: 0; border-radius: 999px;
-    font-size: 1rem; cursor: pointer;
+    font-size: 1rem; cursor: pointer; min-height: 48px;
   }
   .boton:hover { filter: brightness(1.06); }
-  .boton:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid #f2b84b; outline-offset: 2px; }
+  :focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
+  header.barra, .portada, .reserva, footer, .visor { --foco: #f2b84b; }
+  .reserva .caja { --foco: var(--bosque); }
   .boton svg { width: 1.25em; height: 1.25em; flex: none; }
 
   header.barra { position: sticky; top: 0; z-index: 10; background: var(--bosque); color: #fff; }
   header.barra .ancho { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; }
-  .marca { font-family: Georgia, serif; font-size: 1.15rem; font-weight: 700; text-decoration: none; }
-  header.barra .boton { padding: .55em 1em; font-size: .92rem; }
+  .marca { font-family: Georgia, serif; font-size: 1.15rem; font-weight: 700; text-decoration: none; padding: 10px 0; }
+  header.barra .boton { padding: .55em 1em; font-size: .92rem; min-height: 44px; }
 
   .portada { color: #fff; background: linear-gradient(160deg, #1c3529 0%, #2a4f3b 60%, #3d6a4f 100%); padding: 64px 0; }
   .portada .ancho { display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; align-items: center; }
   .portada .sobre { text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; opacity: .85; margin-bottom: 14px; }
   .portada h1 { font-size: clamp(2.4rem, 7vw, 4rem); }
   .portada p.bajada { font-size: 1.15rem; max-width: 44ch; margin: 18px 0 28px; opacity: .95; }
-  .portada .foto { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: block; box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+  .portada .foto { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: block; box-shadow: 0 18px 40px rgba(0,0,0,.35); background: #2a4f3b; }
   .datos { display: flex; flex-wrap: wrap; gap: 14px 30px; list-style: none; padding: 0; margin: 34px 0 0; }
   .datos li { font-size: .95rem; }
   .datos strong { display: block; font-family: Georgia, serif; font-size: 1.3rem; }
+  .estrella { width: .8em; height: .8em; fill: #f2b84b; vertical-align: -.02em; margin-right: .15em; }
+
+  /* Fila de íconos con lo esencial */
+  .servicios { padding: 28px 0; border-bottom: 1px solid #e3d9c4; }
+  .servicios ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px 20px; }
+  .servicios li { display: flex; align-items: center; gap: 10px; font-size: .95rem; line-height: 1.3; }
+  .servicios svg { width: 28px; height: 28px; flex: none; fill: none; stroke: var(--musgo); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
   .galeria { display: grid; gap: 10px; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; }
   .galeria a { border-radius: var(--radio); overflow: hidden; background: #d5ccb6; display: block; }
   .galeria a:first-child { grid-column: span 2; grid-row: span 2; }
   .galeria img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
   .galeria a:hover img { transform: scale(1.04); }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 26px; }
+  .cta span { color: var(--suave); }
+  .cta strong { color: var(--tinta); }
 
   .dos { display: grid; gap: 40px; grid-template-columns: 1.2fr 1fr; align-items: start; }
   .lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
@@ -122,27 +152,68 @@
   .notas li b { font-variant-numeric: tabular-nums; }
 
   .reserva { background: var(--bosque); color: #fff; }
+  .reserva h3 { margin-bottom: .8em; }
+  .pasos { list-style: none; counter-reset: paso; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .pasos li { counter-increment: paso; position: relative; padding-left: 2.6em; min-height: 1.9em; font-size: .97rem; line-height: 1.45; }
+  .pasos li::before {
+    content: counter(paso); position: absolute; left: 0; top: -.1em;
+    width: 1.9em; height: 1.9em; border-radius: 50%; display: grid; place-items: center;
+    background: var(--crema); color: var(--bosque); font: 700 .95rem/1 Georgia, serif;
+  }
   .reserva .caja { background: #fff; color: var(--tinta); border-radius: var(--radio); padding: 26px; }
   .campos { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; margin-bottom: 18px; }
+  .campos > div { min-width: 0; }
   .campos > :last-child { grid-column: 1 / -1; }
   label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 4px; }
   input, select {
-    width: 100%; font: inherit; padding: .65em .7em;
+    display: block; width: 100%; min-width: 0; min-height: 48px; font: inherit; padding: .6em .7em;
     border: 1.5px solid #c9c2b0; border-radius: 10px; background: #fff; color: inherit;
   }
-  .estimado { margin: 0; font-size: .95rem; }
-  .estimado:not(:empty) { margin: 0 0 16px; padding: 10px 14px; background: var(--crema); border-radius: 10px; }
-  .aviso { min-height: 1.5em; font-size: .92rem; color: #a3341d; margin: 10px 0 0; }
+  input[aria-invalid="true"] { border-color: #a3341d; }
+  .estimado { margin: 0 0 16px; padding: 10px 14px; background: var(--crema); border-radius: 10px; font-size: .95rem; }
+  .estimado.vacio { color: var(--suave); }
+  .caja .boton { width: 100%; }
+  .aviso { font-size: .92rem; color: #a3341d; margin: 10px 0 0; }
+  .aviso:empty { display: none; }
+  .ayuda { font-size: .85rem; color: var(--suave); margin: 12px 0 0; text-align: center; }
 
-  .mapa { display: block; width: 100%; height: 340px; border: 0; border-radius: var(--radio); background: #d5ccb6; }
+  .mapa { display: block; width: 100%; height: 340px; border: 0; border-radius: var(--radio); background: #e2d8c2; }
+  div.mapa { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 240px; padding: 20px; text-align: center; }
+  div.mapa p { margin: 0; font-weight: 600; }
+  div.mapa svg { width: 40px; height: 40px; fill: none; stroke: var(--musgo); stroke-width: 1.7; }
+  .boton-sec { min-height: 48px; padding: .6em 1.4em; border: 2px solid var(--bosque); border-radius: 999px; background: transparent; color: var(--bosque); font: 700 1rem system-ui, sans-serif; cursor: pointer; }
+  .boton-sec:hover { background: var(--bosque); color: #fff; }
+  .abrir-mapa { display: inline-block; margin-top: 10px; padding: 12px 0; font-weight: 600; }
 
-  details { background: #fff; border-radius: var(--radio); padding: 16px 20px; margin-bottom: 10px; }
-  summary { font-weight: 600; cursor: pointer; }
-  details p { margin: 10px 0 0; color: var(--suave); }
+  details { background: #fff; border-radius: var(--radio); margin-bottom: 10px; }
+  summary { font-weight: 600; cursor: pointer; padding: 16px 20px; }
+  details p { margin: -4px 20px 0; padding-bottom: 16px; color: var(--suave); }
 
   footer { background: var(--bosque); color: #cfdcd4; padding: 36px 0 96px; font-size: .92rem; }
+  footer a { display: inline-block; padding: 12px 0; }
 
-  .flotante { position: fixed; right: 16px; bottom: 16px; z-index: 20; box-shadow: 0 6px 20px rgba(0,0,0,.28); display: none; }
+  .flotante { position: fixed; right: 16px; bottom: 16px; z-index: 20; box-shadow: 0 6px 20px rgba(0,0,0,.28); display: none; transition: opacity .2s, visibility .2s; }
+  .flotante.oculto { opacity: 0; visibility: hidden; }
+
+  /* Visor de fotos (sin JavaScript, los enlaces abren la foto grande) */
+  .visor { border: 0; padding: 0; margin: 0; width: 100%; height: 100%; max-width: none; max-height: none; background: rgba(10, 18, 14, .94); color: #fff; }
+  .visor::backdrop { background: rgba(10, 18, 14, .94); }
+  .visor img { position: absolute; inset: 56px 0 64px; margin: auto; max-width: 100%; max-height: calc(100% - 120px); object-fit: contain; }
+  .visor p { position: absolute; left: 70px; right: 70px; bottom: 14px; margin: 0; text-align: center; font-size: .9rem; color: #dfe8e2; }
+  .visor button {
+    position: absolute; width: 48px; height: 48px; border: 0; border-radius: 50%;
+    background: rgba(255,255,255,.14); color: #fff; font: 400 30px/1 system-ui, sans-serif; cursor: pointer;
+  }
+  .visor button:hover { background: rgba(255,255,255,.26); }
+  .visor-cerrar { top: 8px; right: 8px; }
+  .visor-ant { left: 8px; bottom: 8px; }
+  .visor-sig { right: 8px; bottom: 8px; }
+  body:has(.visor[open]) { overflow: hidden; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .galeria img { transition: none; }
+  }
 
   @media (max-width: 760px) {
     section { padding: 48px 0; }
@@ -152,12 +223,17 @@
     .datos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
     .datos li { font-size: .85rem; line-height: 1.4; }
     .datos strong { font-size: 1.1rem; margin-bottom: 2px; }
+    .servicios { padding: 24px 0; }
+    .servicios ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
+    .servicios li { font-size: .9rem; }
     .notas { gap: 22px; }
     .precios .tarjeta { display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: 12px; padding: 16px 18px; }
     .precios .tarjeta h3 { margin: 0; }
     .precios .tarjeta .monto { font-size: 1.6rem; margin: 0; }
     .precios .tarjeta p:last-child { grid-column: 1 / -1; margin-top: 2px; }
     .galeria { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
+    .reserva .dos { gap: 28px; }
+    .reserva .caja { padding: 20px; }
     header.barra .boton { display: none; }
     .flotante { display: inline-flex; }
   }
@@ -186,27 +262,53 @@
         <a class="boton" href="#reservar">Consultar disponibilidad</a>
         <ul class="datos">
           <li><strong>4 personas</strong>2 dormitorios · 4 camas</li>
-          <li><strong>4,76 de 5</strong>17 reseñas en Airbnb</li>
+          <li><strong><svg class="estrella" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6 5.8 21l1.4-7L2 9.3l7-.8z"/></svg>4,76 de 5</strong>17 reseñas en Airbnb</li>
           <li><strong>Desde <span data-precio="nocheSemana">$30.000</span></strong>la noche, 2 personas</li>
         </ul>
       </div>
-      <img class="foto" src="fotos/airbnb-14.jpg" alt="Fachada de la cabaña Casita Escondida, rodeada de árboles" width="1200" height="1309">
+      <picture>
+        <source type="image/avif" sizes="(max-width: 760px) calc(100vw - 40px), 420px"
+          srcset="fotos/airbnb-14-480.avif 480w, fotos/airbnb-14-800.avif 800w, fotos/airbnb-14-1200.avif 1200w">
+        <img class="foto" src="fotos/airbnb-14-800.jpg" sizes="(max-width: 760px) calc(100vw - 40px), 420px"
+          srcset="fotos/airbnb-14-480.jpg 480w, fotos/airbnb-14-800.jpg 800w, fotos/airbnb-14.jpg 1200w"
+          alt="Fachada de la cabaña Casita Escondida, rodeada de árboles" width="1200" height="1309" fetchpriority="high">
+      </picture>
     </div>
   </div>
+
+  <section class="servicios" aria-labelledby="t-servicios">
+    <div class="ancho">
+      <h2 id="t-servicios" class="solo-lector">Lo que tiene la cabaña</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.4a9.5 9.5 0 0 1 13 0M8.6 15.8a5 5 0 0 1 6.8 0"/><circle cx="12" cy="19.2" r=".6"/></svg>Wifi</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8S6 9.3 6 14a6 6 0 0 0 12 0c0-4.7-6-11.2-6-11.2Z"/><path d="M9.3 14.6a2.8 2.8 0 0 0 2.4 2.6"/></svg>Agua caliente</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 11h15v5a4 4 0 0 1-4 4h-7a4 4 0 0 1-4-4Z"/><path d="M2.5 11h19M9 7.5V5.5M12 7.5V4M15 7.5V5.5"/></svg>Cocina equipada</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8c.6 2.8 4.6 4.9 4.6 9.7a4.6 4.6 0 0 1-9.2 0c0-2.2 1-3.6 2.2-4.8.2 1.7.9 2.7 2 3.2-.4-3 .4-5.4.4-8.1Z"/><path d="M5 21.2h14"/></svg>Estufa a leña</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><path d="M10 17V7.5h3.2a3 3 0 0 1 0 6H10"/></svg>Estacionamiento para 2 autos</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7M12 17v3.5"/></svg>Televisión</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5c2.5-.9 11.5-.9 14 0 .8 1.3.8 4.2 0 5.5-2.5.9-11.5.9-14 0-.8-1.3-.8-4.2 0-5.5Z"/><rect x="3.5" y="13" width="17" height="7" rx="1.5"/><path d="M3.5 16.5h17"/></svg>Mantas y almohadas extra</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg>Te recibimos en persona</li>
+      </ul>
+    </div>
+  </section>
 
   <section aria-labelledby="t-fotos">
     <div class="ancho">
       <h2 id="t-fotos">Conoce la cabaña</h2>
       <div class="galeria">
-        <a href="fotos/airbnb-01.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-01.jpg" alt="Living con sillones, televisión y estufa a leña" loading="lazy"></a>
-        <a href="fotos/airbnb-07.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-07.jpg" alt="Cocina y comedor con mesa para cuatro" loading="lazy"></a>
-        <a href="fotos/airbnb-08.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-08.jpg" alt="Dormitorio con dos camas" loading="lazy"></a>
-        <a href="fotos/airbnb-10.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-10.jpg" alt="Segundo dormitorio con dos camas" loading="lazy"></a>
-        <a href="fotos/airbnb-12.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-12.jpg" alt="Baño con ducha" loading="lazy"></a>
-        <a href="fotos/airbnb-02.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-02.jpg" alt="Vista al jardín desde la cabaña" loading="lazy"></a>
-        <a href="fotos/airbnb-03.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-03.jpg" alt="Cocina con refrigerador, microondas y hervidor" loading="lazy"></a>
-        <a href="fotos/airbnb-15.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-15.jpg" alt="Entrada por el jardín con árboles frutales" loading="lazy"></a>
-        <a href="fotos/airbnb-04.jpg" target="_blank" rel="noopener"><img src="fotos/airbnb-04.jpg" alt="Mesa del comedor junto a la ventana" loading="lazy"></a>
+        <a href="fotos/airbnb-01.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(100vw - 40px), 500px" srcset="fotos/airbnb-01-480.avif 480w, fotos/airbnb-01-800.avif 800w, fotos/airbnb-01-1200.avif 1200w"><img src="fotos/airbnb-01-800.jpg" sizes="(max-width: 760px) calc(100vw - 40px), 500px" srcset="fotos/airbnb-01-480.jpg 480w, fotos/airbnb-01-800.jpg 800w, fotos/airbnb-01.jpg 1200w" width="1200" height="900" alt="Living con sillones, televisión y estufa a leña" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-07.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-07-480.avif 480w, fotos/airbnb-07-800.avif 800w"><img src="fotos/airbnb-07-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-07-480.jpg 480w, fotos/airbnb-07-800.jpg 800w" width="1200" height="900" alt="Cocina y comedor con mesa para cuatro" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-08.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-08-480.avif 480w, fotos/airbnb-08-800.avif 800w"><img src="fotos/airbnb-08-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-08-480.jpg 480w, fotos/airbnb-08-800.jpg 800w" width="1200" height="900" alt="Dormitorio con dos camas" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-10.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-10-480.avif 480w, fotos/airbnb-10-800.avif 800w"><img src="fotos/airbnb-10-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-10-480.jpg 480w, fotos/airbnb-10-800.jpg 800w" width="1200" height="900" alt="Segundo dormitorio con dos camas" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-12.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-12-480.avif 480w, fotos/airbnb-12-800.avif 800w"><img src="fotos/airbnb-12-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-12-480.jpg 480w, fotos/airbnb-12-800.jpg 800w" width="1200" height="900" alt="Baño con ducha" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-02.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-02-480.avif 480w, fotos/airbnb-02-800.avif 800w"><img src="fotos/airbnb-02-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-02-480.jpg 480w, fotos/airbnb-02-800.jpg 800w" width="1200" height="900" alt="Vista al jardín desde la cabaña" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-03.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-03-480.avif 480w, fotos/airbnb-03-800.avif 800w"><img src="fotos/airbnb-03-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-03-480.jpg 480w, fotos/airbnb-03-800.jpg 800w" width="1200" height="900" alt="Cocina con refrigerador, microondas y hervidor" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-15.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-15-480.avif 480w, fotos/airbnb-15-800.avif 800w"><img src="fotos/airbnb-15-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-15-480.jpg 480w, fotos/airbnb-15-800.jpg 800w" width="1200" height="1160" alt="Entrada por el jardín con árboles frutales" loading="lazy" decoding="async"></picture></a>
+        <a href="fotos/airbnb-04.jpg"><picture><source type="image/avif" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-04-480.avif 480w, fotos/airbnb-04-800.avif 800w"><img src="fotos/airbnb-04-480.jpg" sizes="(max-width: 760px) calc(50vw - 25px), 250px" srcset="fotos/airbnb-04-480.jpg 480w, fotos/airbnb-04-800.jpg 800w" width="1200" height="900" alt="Mesa del comedor junto a la ventana" loading="lazy" decoding="async"></picture></a>
+      </div>
+      <div class="cta">
+        <a class="boton" href="#reservar">Consultar disponibilidad</a>
+        <span>Desde <strong data-precio="nocheSemana">$30.000</strong> la noche</span>
       </div>
     </div>
   </section>
@@ -250,39 +352,7 @@
     </div>
   </section>
 
-  <section class="alterna" aria-labelledby="t-cerca">
-    <div class="ancho">
-      <h2 id="t-cerca">Qué hacer cerca</h2>
-      <div class="tarjetas">
-        <div class="tarjeta">
-          <h3>Volcán Lonquimay y Cráter Navidad</h3>
-          <p>Caminatas sobre escoria volcánica en la Reserva Nacional Malalcahuello-Nalcas, con vista a varios volcanes.</p>
-        </div>
-        <div class="tarjeta">
-          <h3>Malalcahuello y Corralco</h3>
-          <p>Termas, senderos entre araucarias y el centro de montaña Corralco en la ladera del volcán.</p>
-        </div>
-        <div class="tarjeta">
-          <h3>Lagunas Galletué e Icalma</h3>
-          <p>Playas tranquilas de cordillera para kayak y baño. Aquí nace el río Biobío.</p>
-        </div>
-        <div class="tarjeta">
-          <h3>Río Biobío</h3>
-          <p>Pesca con mosca, flotadas y paseos por la ribera en el tramo alto del río.</p>
-        </div>
-        <div class="tarjeta">
-          <h3>Túnel Las Raíces</h3>
-          <p>El histórico túnel ferroviario que hoy se cruza en auto, en el camino a Lonquimay.</p>
-        </div>
-        <div class="tarjeta">
-          <h3>Cultura pehuenche</h3>
-          <p>Piñones, artesanía y gastronomía local en las comunidades del valle.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="precios" aria-labelledby="t-precios">
+  <section class="alterna" id="precios" aria-labelledby="t-precios">
     <div class="ancho">
       <h2 id="t-precios">Precios</h2>
       <p>Precio por noche reservando directo con nosotros por WhatsApp.</p>
@@ -314,17 +384,22 @@
     <div class="ancho dos">
       <div>
         <h2 id="t-reservar">Consulta disponibilidad</h2>
-        <p>Elige tus fechas y te respondemos por WhatsApp con la disponibilidad y la forma de pago. Reservas directo con nosotros, sin comisiones de plataformas.</p>
+        <h3>Cómo reservar</h3>
+        <ol class="pasos">
+          <li><strong>Elige tus fechas</strong> y cuántas personas vienen: ves el total estimado al instante.</li>
+          <li><strong>Envíanos el mensaje por WhatsApp</strong> y te confirmamos la disponibilidad y la forma de pago.</li>
+          <li><strong>Llega entre las 15:00 y las 23:00:</strong> te recibimos en persona.</li>
+        </ol>
       </div>
       <form class="caja" id="form-reserva" novalidate>
         <div class="campos">
           <div>
             <label for="llegada">Llegada</label>
-            <input type="date" id="llegada" required>
+            <input type="date" id="llegada" required aria-describedby="aviso">
           </div>
           <div>
             <label for="salida">Salida</label>
-            <input type="date" id="salida" required>
+            <input type="date" id="salida" required aria-describedby="aviso">
           </div>
           <div>
             <label for="personas">Personas</label>
@@ -337,6 +412,7 @@
           Preguntar por WhatsApp
         </button>
         <p class="aviso" id="aviso" role="alert"></p>
+        <p class="ayuda">Se abre WhatsApp con tu mensaje listo para enviar. Reservas directo con nosotros, sin comisiones de plataformas.</p>
       </form>
     </div>
   </section>
@@ -345,19 +421,59 @@
     <div class="ancho">
       <h2 id="t-ubicacion">Cómo llegar</h2>
       <p><strong>Manuel Rodríguez 670, Lonquimay.</strong> Desde Victoria o Temuco se llega por Curacautín y Malalcahuello, cruzando el Túnel Las Raíces.</p>
-      <!-- Mapa por coordenadas, no por la ficha de Google: así no depende de dónde esté el pin de la ficha -->
-      <iframe class="mapa" title="Mapa con la ubicación de la Cabaña Casita Escondida" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=-38.456466,-71.365885&z=16&hl=es&output=embed"></iframe>
-      <p style="margin-top:14px"><a href="https://www.google.com/maps/search/?api=1&query=-38.456466,-71.365885" target="_blank" rel="noopener">Abrir en Google Maps</a></p>
+      <!-- El mapa de Google pesa mucho: se carga solo al tocar "Ver mapa".
+           Mapa por coordenadas, no por la ficha de Google: así no depende de dónde esté el pin de la ficha -->
+      <div class="mapa" id="mapa" data-src="https://www.google.com/maps?q=-38.456466,-71.365885&z=16&hl=es&output=embed">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.3-7-12a7 7 0 0 1 14 0c0 5.7-7 12-7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <p>Manuel Rodríguez 670, Lonquimay</p>
+        <button type="button" class="boton-sec" id="ver-mapa" hidden>Ver mapa</button>
+      </div>
+      <a class="abrir-mapa" href="https://www.google.com/maps/search/?api=1&query=-38.456466,-71.365885" target="_blank" rel="noopener">Abrir en Google Maps</a>
     </div>
   </section>
 
-  <section class="alterna" aria-labelledby="t-dudas">
+  <section class="alterna" aria-labelledby="t-cerca">
+    <div class="ancho">
+      <h2 id="t-cerca">Qué hacer cerca</h2>
+      <div class="tarjetas">
+        <div class="tarjeta">
+          <h3>Volcán Lonquimay y Cráter Navidad</h3>
+          <p>Caminatas sobre escoria volcánica en la Reserva Nacional Malalcahuello-Nalcas, con vista a varios volcanes.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Malalcahuello y Corralco</h3>
+          <p>Termas, senderos entre araucarias y el centro de montaña Corralco en la ladera del volcán.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Lagunas Galletué e Icalma</h3>
+          <p>Playas tranquilas de cordillera para kayak y baño. Aquí nace el río Biobío.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Río Biobío</h3>
+          <p>Pesca con mosca, flotadas y paseos por la ribera en el tramo alto del río.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Ciclovía al Túnel Las Raíces</h3>
+          <p>Pedalea o camina desde Lonquimay por la ciclovía que llega hasta el histórico túnel ferroviario, que hoy se cruza en auto.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Cultura pehuenche</h3>
+          <p>Piñones, artesanía y gastronomía local en las comunidades del valle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-dudas">
     <div class="ancho">
       <h2 id="t-dudas">Preguntas frecuentes</h2>
       <details>
         <summary>¿A qué hora es la llegada y la salida?</summary>
         <p>La llegada es entre las 15:00 y las 23:00. La salida es hasta las 13:00.</p>
+      </details>
+      <details>
+        <summary>¿Cómo pago la reserva?</summary>
+        <p>Cuando nos escribes por WhatsApp te confirmamos si tus fechas están disponibles y te indicamos la forma de pago.</p>
       </details>
       <details>
         <summary>¿Dónde dejo el auto?</summary>
@@ -366,10 +482,6 @@
       <details>
         <summary>¿Aceptan mascotas?</summary>
         <p>No, la cabaña no admite mascotas.</p>
-      </details>
-      <details>
-        <summary>¿Tiene wifi?</summary>
-        <p>Sí, la cabaña tiene wifi.</p>
       </details>
       <details>
         <summary>¿Se puede fumar o hacer fiestas?</summary>
@@ -391,6 +503,14 @@
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
   Reservar
 </a>
+
+<dialog class="visor" id="visor" aria-label="Fotos de la cabaña">
+  <img id="visor-img" alt="">
+  <p id="visor-texto"></p>
+  <button type="button" class="visor-cerrar" aria-label="Cerrar">×</button>
+  <button type="button" class="visor-ant" aria-label="Foto anterior">‹</button>
+  <button type="button" class="visor-sig" aria-label="Foto siguiente">›</button>
+</dialog>
 
 <script>
   // ─── Datos de la cabaña: lo único que hay que editar aquí ───
@@ -456,7 +576,8 @@
 
   function actualizarEstimado() {
     const c = cotizacionActual();
-    if (!c) { estimado.textContent = ''; return; }
+    estimado.classList.toggle('vacio', !c);
+    if (!c) { estimado.textContent = 'Elige las fechas para ver el total estimado.'; return; }
     if (c.especial) {
       estimado.textContent = `${CABANA.nochesPrecioEspecial} noches o más: te respondemos con un precio especial.`;
       return;
@@ -466,6 +587,11 @@
       `${c.noches} ${c.noches === 1 ? 'noche' : 'noches'}, ${n} ${n === 1 ? 'persona' : 'personas'}`;
   }
 
+  // Al corregir un campo se quita la marca de error
+  [llegada, salida].forEach((el) => el.addEventListener('change', () => {
+    el.removeAttribute('aria-invalid');
+    if (llegada.value && salida.value) aviso.textContent = '';
+  }));
   [salida, personas].forEach((el) => {
     el.addEventListener('input', actualizarEstimado);
     el.addEventListener('change', actualizarEstimado);
@@ -484,13 +610,20 @@
     a.rel = 'noopener';
   });
 
+  function error(campo, texto) {
+    aviso.textContent = texto;
+    campo.setAttribute('aria-invalid', 'true');
+    campo.focus();
+  }
+
   $('form-reserva').addEventListener('submit', (e) => {
     e.preventDefault();
     aviso.textContent = '';
-    if (!llegada.value || !salida.value) { aviso.textContent = 'Elige la fecha de llegada y de salida.'; return; }
+    if (!llegada.value) { error(llegada, 'Elige la fecha de llegada.'); return; }
+    if (!salida.value) { error(salida, 'Elige la fecha de salida.'); return; }
     const desde = aFecha(llegada.value), hasta = aFecha(salida.value);
     const noches = Math.round((hasta - desde) / 86400000);
-    if (noches < 1) { aviso.textContent = 'La salida tiene que ser después de la llegada.'; return; }
+    if (noches < 1) { error(salida, 'La salida tiene que ser después de la llegada.'); return; }
     const n = Number(personas.value);
     const c = cotizar(desde, hasta, n);
     const mensaje = `Hola, quiero consultar disponibilidad de ${CABANA.nombre}:\n` +
@@ -499,6 +632,66 @@
       (c.especial ? '• Estadía larga: consulto por precio especial' : `• Total estimado según la web: ${clp(c.total)}`);
     window.open(enlace(mensaje), '_blank', 'noopener');
   });
+
+  // Mapa: el iframe de Google se inserta solo si la persona lo pide
+  const verMapa = $('ver-mapa');
+  verMapa.hidden = false;
+  verMapa.addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.className = 'mapa';
+    f.title = 'Mapa con la ubicación de la Cabaña Casita Escondida';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.src = $('mapa').dataset.src;
+    $('mapa').replaceWith(f);
+    f.focus();
+  });
+
+  // En el teléfono, el botón flotante se esconde mientras se ve el formulario
+  const flotante = document.querySelector('.flotante');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => flotante.classList.toggle('oculto', e.isIntersecting)).observe($('reservar'));
+  }
+
+  // Visor de fotos: muestra al tiro la miniatura y la cambia por la foto grande al cargar.
+  // Se cierra con ×, Esc, tocando fuera de la foto o con el botón Atrás del teléfono.
+  const visor = $('visor'), visorImg = $('visor-img'), fotos = [...document.querySelectorAll('.galeria a')];
+  let actual = 0;
+  function mostrar(i) {
+    actual = (i + fotos.length) % fotos.length;
+    const a = fotos[actual], mini = a.querySelector('img');
+    visorImg.src = mini.currentSrc || mini.src;
+    visorImg.alt = mini.alt;
+    $('visor-texto').textContent = `${mini.alt} · ${actual + 1} de ${fotos.length}`;
+    const grande = new Image();
+    grande.onload = () => { if (fotos[actual] === a) visorImg.src = grande.src; };
+    grande.src = a.href;
+  }
+  if (visor.showModal) {
+    fotos.forEach((a, i) => a.addEventListener('click', (e) => {
+      if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+      e.preventDefault();
+      mostrar(i);
+      visor.showModal();
+      history.pushState({ visor: true }, '');
+    }));
+    visor.querySelector('.visor-cerrar').addEventListener('click', () => visor.close());
+    visor.querySelector('.visor-ant').addEventListener('click', () => mostrar(actual - 1));
+    visor.querySelector('.visor-sig').addEventListener('click', () => mostrar(actual + 1));
+    visor.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') mostrar(actual - 1);
+      if (e.key === 'ArrowRight') mostrar(actual + 1);
+    });
+    visor.addEventListener('click', (e) => { if (e.target === visor) visor.close(); });
+    let x0 = null;
+    visor.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    visor.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - x0;
+      if (x0 !== null && Math.abs(dx) > 50) mostrar(actual + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+    visor.addEventListener('close', () => { if (history.state && history.state.visor) history.back(); });
+    window.addEventListener('popstate', () => { if (visor.open) visor.close(); });
+  }
 </script>
 </body>
 </html>
